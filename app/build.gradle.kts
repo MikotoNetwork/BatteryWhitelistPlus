@@ -11,12 +11,24 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.batterywhitelist.miuix"
+        applicationId = "com.batterywhitelist.plus"
         minSdk = 29
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
     }
+    
+    
+     // 签名配置
+    signingConfigs {
+        create("release") {
+            storeFile = file(System.getenv("KEYSTORE_PATH") ?: "release.jks")
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
+        }
+    }
+
 
     buildTypes {
         release {
@@ -26,11 +38,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // 使用自己的签名
+            signingConfig = signingConfigs.getByName("release")
             
         }
     }
-
-    
+       
     buildFeatures {
         compose = true
     }

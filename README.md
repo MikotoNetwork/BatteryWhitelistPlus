@@ -1,6 +1,6 @@
-# BatteryWhitelist (电池白名单守卫者Plus)
-![BatteryWhitelist](assets/ic_launcher.png)
-[![CI](https://github.com/MikotoNetwork/BatteryWhitelist/actions/workflows/release.yml/badge.svg)](https://github.com/MikotoNetwork/BatteryWhitelist/actions/workflows/release.yml)<br>
+# BatteryWhitelistPlus (电池白名单守卫者Plus)
+![BatteryWhitelistPlus](assets/ic_launcher.png)
+[![CI](https://github.com/MikotoNetwork/BatteryWhitelistPlus/actions/workflows/release.yml/badge.svg)](https://github.com/MikotoNetwork/BatteryWhitelistPlus/actions/workflows/release.yml)<br>
 > **“买的设备是自己的，自己拥有对该设备的一切权利，厂商无权干涉。”**
 > 
 > 一个诞生于对抗流氓系统“爹味”管理的硬核 LSPosed 模块。
@@ -18,7 +18,7 @@
 *   **内存守护线程**：在系统框架内部开启守护线程，每 60 秒主动调用系统命令，实时纠正底层状态。
 *   **开机自启脚本 (Root)**：通过 UI 自动向 `/data/adb/service.d/` 写入守护脚本，开机后以最高 Root 权限无限循环执行强制纠正。
 *   **动态 UI 管理**：抛弃写死的包名，内置极简搜索列表，用户可自行勾选需要保护的应用，配置实时生效。
-*   **持久化日志**：绕过系统日志拦截，所有操作直接写入 `/data/system/BatteryWhitelist.log`，排查状态一目了然。
+*   **持久化日志**：绕过系统日志拦截，所有操作直接写入 `/data/system/BatteryWhitelistPlus.log`，排查状态一目了然。
 *   **固定签名**：支持 GitHub Actions 云端编译并配置固定签名，升级无需卸载。
 
 ## 🛡️ “三位一体”防御体系架构
@@ -46,17 +46,17 @@
 *   已正确安装并激活 **Zygisk Next** 与 **LSPosed** (API 102)
 
 ### 安装步骤
-1. 前往 [Releases](https://github.com/MikotoNetwork/BatteryWhitelist/releases/latest) 下载最新构建的 `app-release.apk`。
+1. 前往 [Releases](https://github.com/MikotoNetwork/BatteryWhitelistPlus/releases/latest) 下载最新构建的 `app-release.apk`。
 2. 在手机上安装该 APK。
-3. 打开 Root 管理器（KernelSU / Magisk），在应用列表中找到 `BatteryWhitelist`，**开启超级用户权限开关**（只需点一次，后续静默授权）。
-4. 打开 BatteryWhitelist App，在列表中搜索并勾选你需要保护的应用（例如：小米运动健康）。
+3. 打开 Root 管理器（KernelSU / Magisk），在应用列表中找到 `BatteryWhitelistPlus`，**开启超级用户权限开关**（只需点一次，后续静默授权）。
+4. 打开 BatteryWhitelistPlus App，在列表中搜索并勾选你需要保护的应用（例如：小米运动健康）。
 5. 退出 App 后再次打开，此时 App 会通过 Root 权限自动向 `/data/adb/service.d/` 部署守护脚本。
 6. 在 LSPosed 管理器中启用本模块，作用域**只勾选「Android 系统（android）」**。
 7. 重启手机。
 
 ### 验证成功
 重启后，用 MT 管理器检查以下位置：
-*   `/data/system/BatteryWhitelist.log` 是否出现 `内存守护线程已启动` 和 `成功连接 UI 配置！`
+*   `/data/system/BatteryWhitelistPlus.log` 是否出现 `内存守护线程已启动` 和 `成功连接 UI 配置！`
 *   `/data/adb/service.d/battery_guard.sh` 是否存在且权限为 `755`
 *   在终端执行 `dumpsys deviceidle whitelist`，查看受保护应用是否在其中。
 
@@ -77,4 +77,4 @@
 只要设备在我们手里，一切规则就应由我们自己书写。
 
 *(本项目基于 MIT 协议开源)*
-![BatteryWhitelist](assets/ic_launcher.png)
+![BatteryWhitelistPlus](assets/ic_launcher.png)
